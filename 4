@@ -1,0 +1,21 @@
+ load_wallets()
+    logger.info(f'Загружено {len(WALLETS)} кошельков')
+    filtered_wallets1 = get_filtered_wallets(file_data1)
+    filtered_wallets2 = get_filtered_wallets(file_data2)
+    if (len(filtered_wallets1) == 0):
+        logger.error('Не найден ни один кошелек в базе!')
+        return
+    save_to_excel(filtered_wallets1, filtered_wallets2)
+    logger.success('Готово!\n')
+    WALLETS.clear()
+
+
+def get_action() -> str:
+    theme = {
+        "Question": {
+            "brackets_color": "bright_yellow"
+        },
+        "List": {
+            "selection_color": "bright_blue"
+        }
+    }
